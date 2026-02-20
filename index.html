@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Natural | 비건 뷰티 쇼핑몰</title>
+    
+    <!-- 파비콘 -->
+    <link rel="icon" href="image\favicon.png" sizes="any">
+    <link rel="icon" href="image\favicon.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="images/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- Open Graph (링크 공유 미리보기) -->
+    <meta property="og:title" content="Be Natural | 비건 뷰티 쇼핑몰">
+    <meta property="og:description" content="동물실험 없는 순수한 스킨케어, 헤어케어, 바디케어 - 비건 뷰티 쇼핑몰">
+    <meta property="og:image" content="https://cosmetics-five-khaki.vercel.app/image/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://cosmetics-five-khaki.vercel.app">
+    <meta property="og:type" content="website">
+
+    <!-- 기존 CSS 링크들 -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="header">
+    <div class="container">
+		<a href="index.html" class="logo">
+			<img src="image\benatural.png" alt="#">
+		  </a>
+      <nav class="nav">
+        <ul>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="skin_care.html">SKIN CARE</a></li>
+          <li><a href="hair.html">HAIR CARE</a></li>
+          <li><a href="body.html">BODY CARE</a></li>
+          <li><a href="review.html">REVIEW</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ko" aria-label="한국어">
+          <img src="https://flagcdn.com/w40/kr.png" srcset="https://flagcdn.com/w80/kr.png 2x" alt="한국어" width="28" height="20">
+        </button>
+        <button class="lang-btn" data-lang="en" aria-label="English">
+          <img src="https://flagcdn.com/w40/us.png" srcset="https://flagcdn.com/w80/us.png 2x" alt="English" width="28" height="20">
+        </button>
+      </div>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </header>
+
+  <!-- 섹션 1: 히어로 슬라이더 -->
+  <section class="hero" id="hero">
+    <div class="hero-slider">
+      <!-- 슬라이드 1 -->
+      <div class="hero-slide active" style="background-image: url('image/slide1.png');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-subtitle">100% VEGAN & CRUELTY-FREE</span>
+          <h1 data-i18n-html="hero-1-title">자연 그대로의 아름다움<br><span class="highlight">Be Natural</span>, 비건 뷰티 쇼핑몰</h1>
+          <p data-i18n="hero-1-desc">동물실험 없는 순수한 스킨케어, 헤어케어, 바디케어</p>
+          <a href="#products" class="btn btn-primary" data-i18n="hero-1-btn">베스트셀러 보기</a>
+        </div>
+      </div>
+      <!-- 슬라이드 2 -->
+      <div class="hero-slide" style="background-image: url('image/slide2.png');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-subtitle">PURE & NATURAL INGREDIENTS</span>
+          <h1 data-i18n-html="hero-2-title">피부에도 착하고<br><span class="highlight">지구에도 착한</span> 비건 뷰티</h1>
+          <p data-i18n="hero-2-desc">식물 유래 원료로 만든 순수한 스킨케어</p>
+          <a href="#about" class="btn btn-primary" data-i18n="hero-2-btn">브랜드 스토리</a>
+        </div>
+      </div>
+      <!-- 슬라이드 3 -->
+      <div class="hero-slide" style="background-image: url('image/slide3.png');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-subtitle">FIRST ORDER 20% OFF</span>
+          <h1 data-i18n-html="hero-3-title">첫 구매 고객<br><span class="highlight">20% 할인</span> 혜택</h1>
+          <p data-i18n="hero-3-desc">지금 가입하고 비건 뷰티를 시작하세요</p>
+          <a href="#contact" class="btn btn-primary" data-i18n="hero-3-btn">회원가입 하기</a>
+        </div>
+      </div>
+    </div>
+    <!-- 슬라이드 도트 인디케이터 -->
+    <div class="hero-dots">
+      <button class="hero-dot active" data-slide="0"></button>
+      <button class="hero-dot" data-slide="1"></button>
+      <button class="hero-dot" data-slide="2"></button>
+    </div>
+  </section>
+
+  <!-- 섹션 2: 소개 (비건 철학) -->
+  <section class="intro" id="about">
+    <div class="container">
+      <h2 class="section-title" data-i18n-html="intro-title">피부에도 착하고, 지구에도 착한<br>비건 뷰티를 시작하세요.</h2>
+      <p class="section-desc" data-i18n="intro-desc">Be Natural이 약속하는 세 가지 원칙</p>
+      
+      <div class="steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <p data-i18n="step-1">100% 동물실험 없는 크루얼티프리 인증 제품만 취급합니다</p>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <p data-i18n="step-2">식물 유래 원료와 자연 성분으로 피부 자극을 최소화합니다</p>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <p data-i18n="step-3">친환경 패키지로 포장부터 배송까지 지구를 생각합니다</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 3: 가치 제안 -->
+  <section class="value-proposition">
+    <div class="vp-overlay"></div>
+    <div class="container">
+      <h2 class="section-title" data-i18n-html="vp-title">화학 성분 대신,<br><span class="highlight">자연의 힘</span>으로 아름다워지세요.</h2>
+    </div>
+  </section>
+
+  <!-- 섹션 4: 베스트셀러 제품 (다크 배경) -->
+  <section class="projects" id="products">
+    <div class="container">
+      <h2 class="section-title light">Best Sellers</h2>
+      <p class="section-desc light" data-i18n="products-desc">고객님들이 가장 사랑하는 비건 뷰티 아이템</p>
+      
+      <div class="project-grid">
+        <div class="project-item">
+          <img src="image/product/serum.png" alt="비건 세럼">
+        </div>
+        <div class="project-item">
+          <img src="image\product\facial_cream.png" alt="비건 크림">
+        </div>
+        <div class="project-item">
+          <img src="image\product\shampoo.png" alt="비건 샴푸">
+        </div>
+        <div class="project-item">
+          <img src="image\product\bodywash.png" alt="비건 바디워시">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 5: 강점 (아이콘 3개) -->
+  <section class="strength" id="strength">
+    <div class="container">
+      <h2 class="section-title" data-i18n="strength-title">Be Natural을 선택해야 하는 이유</h2>
+      
+      <div class="strength-grid">
+        <div class="strength-item">
+          <div class="strength-icon">🌿</div>
+          <h3 data-i18n="str-1-title">100% 비건 인증</h3>
+          <p data-i18n-html="str-1-desc">한국비건인증원 및 국제 비건 인증을<br>획득한 제품만 판매합니다.</p>
+        </div>
+        <div class="strength-item">
+          <div class="strength-icon">🐰</div>
+          <h3 data-i18n="str-2-title">크루얼티프리</h3>
+          <p data-i18n-html="str-2-desc">어떤 과정에서도 동물실험을 하지 않는<br>윤리적인 뷰티를 지향합니다.</p>
+        </div>
+        <div class="strength-item">
+          <div class="strength-icon">♻️</div>
+          <h3 data-i18n="str-3-title">친환경 패키징</h3>
+          <p data-i18n-html="str-3-desc">재활용 가능한 용기와 생분해 포장재로<br>환경 부담을 최소화합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 6: 카테고리별 제품 소개 -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title" data-i18n-html="category-title">카테고리별<br><span class="highlight">비건 뷰티 라인업</span></h2>
+      
+      <div class="service-grid">
+        <div class="service-item">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x300/e8e8e8/333?text=Skin+Care" alt="스킨케어">
+          </div>
+          <div class="service-content">
+            <h3 data-i18n="cat-1-title">스킨케어</h3>
+            <p data-i18n="cat-1-desc">식물 줄기세포와 자연 유래 성분으로 피부 본연의 건강함을 되찾아줍니다.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x300/e8e8e8/333?text=Hair+Care" alt="헤어케어">
+          </div>
+          <div class="service-content">
+            <h3 data-i18n="cat-2-title">헤어케어</h3>
+            <p data-i18n="cat-2-desc">실리콘·파라벤 프리 포뮬러로 두피부터 모발 끝까지 건강하게 케어합니다.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x300/e8e8e8/333?text=Body+Care" alt="바디케어">
+          </div>
+          <div class="service-content">
+            <h3 data-i18n="cat-3-title">바디케어</h3>
+            <p data-i18n="cat-3-desc">시어버터와 식물성 오일로 온몸을 촉촉하고 부드럽게 가꿔줍니다.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x300/e8e8e8/333?text=Vegan+Makeup" alt="비건 메이크업">
+          </div>
+          <div class="service-content">
+            <h3 data-i18n="cat-4-title">비건 메이크업</h3>
+            <p data-i18n="cat-4-desc">자연 유래 색소와 미네랄 파우더로 피부에 부담 없는 메이크업을 완성합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 7: 쇼핑 프로세스 -->
+  <section class="process" id="process">
+    <div class="container">
+      <h2 class="section-title" data-i18n-html="process-title">간편한 비건 뷰티 쇼핑<br>Be Natural과 함께하세요</h2>
+      
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-number">1</div>
+          <h3 data-i18n="proc-1-title">탐색</h3>
+          <p data-i18n-html="proc-1-desc">피부 타입별<br>제품 찾기</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="process-number">2</div>
+          <h3 data-i18n="proc-2-title">선택</h3>
+          <p data-i18n-html="proc-2-desc">비건 인증<br>제품 확인</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="process-number">3</div>
+          <h3 data-i18n="proc-3-title">주문</h3>
+          <p data-i18n-html="proc-3-desc">간편 결제 및<br>친환경 포장</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="process-number">4</div>
+          <h3 data-i18n="proc-4-title">배송</h3>
+          <p data-i18n-html="proc-4-desc">탄소중립<br>빠른 배송</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="process-number">5</div>
+          <h3 data-i18n="proc-5-title">리뷰</h3>
+          <p data-i18n-html="proc-5-desc">사용 후기<br>적립금 혜택</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 8: 쇼핑 -->
+  <section class="shop" id="shop">
+    <div class="container">
+      <h2 class="section-title" data-i18n="shop-title">제품 보기</h2>
+      <div class="shop-filter">
+        <button class="shop-filter-btn active" data-shop-filter="all" data-i18n="shop-filter-all">All</button>
+        <button class="shop-filter-btn" data-shop-filter="skincare" data-i18n="shop-filter-skin">Skin Care</button>
+        <button class="shop-filter-btn" data-shop-filter="haircare" data-i18n="shop-filter-hair">Hair Care</button>
+        <button class="shop-filter-btn" data-shop-filter="bodycare" data-i18n="shop-filter-body">Body Care</button>
+      </div>
+      <div class="shop-grid">
+        <!-- 스킨케어 1 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="skincare">
+          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500" alt="비건 히알루론 세럼">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-skin">Skin Care</span>
+            <h4 data-i18n="shop-1-name">비건 히알루론 세럼</h4>
+            <p class="shop-price">₩38,000</p>
+          </div>
+        </a>
+        <!-- 스킨케어 2 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="skincare">
+          <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=500" alt="카밀레 토너">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-skin">Skin Care</span>
+            <h4 data-i18n="shop-2-name">카밀레 수딩 토너</h4>
+            <p class="shop-price">₩28,000</p>
+          </div>
+        </a>
+        <!-- 스킨케어 3 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="skincare">
+          <img src="https://images.unsplash.com/photo-1570194065650-d99fb4ee64b0?w=500" alt="시카 크림">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-skin">Skin Care</span>
+            <h4 data-i18n="shop-3-name">시카 리페어 크림</h4>
+            <p class="shop-price">₩42,000</p>
+          </div>
+        </a>
+        <!-- 스킨케어 4 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="skincare">
+          <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=500" alt="그린티 에센스">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-skin">Skin Care</span>
+            <h4 data-i18n="shop-4-name">그린티 에센스</h4>
+            <p class="shop-price">₩35,000</p>
+          </div>
+        </a>
+        <!-- 헤어케어 1 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="haircare">
+          <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=500" alt="비건 샴푸">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-hair">Hair Care</span>
+            <h4 data-i18n="shop-5-name">로즈마리 볼륨 샴푸</h4>
+            <p class="shop-price">₩24,000</p>
+          </div>
+        </a>
+        <!-- 헤어케어 2 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="haircare">
+          <img src="https://images.unsplash.com/photo-1519735777090-ec97162dc266?w=500" alt="헤어 트리트먼트">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-hair">Hair Care</span>
+            <h4 data-i18n="shop-6-name">아르간 헤어 트리트먼트</h4>
+            <p class="shop-price">₩32,000</p>
+          </div>
+        </a>
+        <!-- 헤어케어 3 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="haircare">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500" alt="헤어 에센스">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-hair">Hair Care</span>
+            <h4 data-i18n="shop-7-name">카멜리아 헤어 에센스</h4>
+            <p class="shop-price">₩29,000</p>
+          </div>
+        </a>
+        <!-- 헤어케어 4 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="haircare">
+          <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=500" alt="두피 스케일러">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-hair">Hair Care</span>
+            <h4 data-i18n="shop-8-name">티트리 두피 스케일러</h4>
+            <p class="shop-price">₩22,000</p>
+          </div>
+        </a>
+        <!-- 바디케어 1 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="bodycare">
+          <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500" alt="바디 로션">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-body">Body Care</span>
+            <h4 data-i18n="shop-9-name">시어버터 바디 로션</h4>
+            <p class="shop-price">₩26,000</p>
+          </div>
+        </a>
+        <!-- 바디케어 2 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="bodycare">
+          <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500" alt="바디 워시">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-body">Body Care</span>
+            <h4 data-i18n="shop-10-name">라벤더 바디 워시</h4>
+            <p class="shop-price">₩19,000</p>
+          </div>
+        </a>
+        <!-- 바디케어 3 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="bodycare">
+          <img src="https://images.unsplash.com/photo-1594761051656-c18f7e434526?w=500" alt="핸드크림">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-body">Body Care</span>
+            <h4 data-i18n="shop-11-name">유칼립투스 핸드크림</h4>
+            <p class="shop-price">₩15,000</p>
+          </div>
+        </a>
+        <!-- 바디케어 4 -->
+        <a href="product-detail.html" class="shop-item" data-shop-category="bodycare">
+          <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500" alt="바디 스크럽">
+          <div class="shop-overlay">
+            <span class="shop-cat-label" data-i18n="shop-cat-body">Body Care</span>
+            <h4 data-i18n="shop-12-name">코코넛 바디 스크럽</h4>
+            <p class="shop-price">₩23,000</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 9: CTA -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2 data-i18n-html="cta-title"><span class="cta-line1">첫 구매 20% 할인,</span><br><span class="cta-line2">지금 시작하세요</span></h2>
+      <p data-i18n="cta-desc">회원가입만 하면 비건 뷰티 첫 주문 할인 쿠폰을 드립니다</p>
+      <a href="#" class="btn btn-light" data-i18n="cta-btn">회원가입 하기</a>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+			<a href="index.html" class="footer-logo">
+				<img src="image/benatural_white.png" alt="#">
+			  </a>
+          <p data-i18n-html="footer-info">서울특별시 강남구 테헤란로 123<br>
+          대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+          TEL: 02-1234-5678 | FAX: 02-1234-5679</p>
+        </div>
+        <div class="footer-links">
+          <a href="#" data-i18n="footer-link-1">브랜드 소개</a>
+          <a href="#" data-i18n="footer-link-2">전체 제품</a>
+          <a href="#" data-i18n="footer-link-3">비건 인증</a>
+          <a href="#" data-i18n="footer-link-4">고객센터</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 BENATURAL. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 플로팅 스크롤 버튼 -->
+  <div class="floating-nav">
+    <button class="floating-btn" id="scrollTopBtn" aria-label="맨 위로">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+    <button class="floating-btn" id="scrollBottomBtn" aria-label="맨 아래로">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
