@@ -1265,6 +1265,7 @@ img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
+  justify-items: center;
 }
 
 .product-card {
@@ -1273,6 +1274,7 @@ img {
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
 }
 
 .product-card:hover {
@@ -1284,6 +1286,7 @@ img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
