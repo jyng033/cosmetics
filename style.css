@@ -583,22 +583,31 @@ img {
    카테고리별 제품 섹션
    ============================================================ */
 .services {
-  padding: 100px 0;
+  /* [카테고리 섹션 상하 여백] */
+  --svc-section-padding: 100px;
+  padding: var(--svc-section-padding) 0;
   background: #fff;
 }
 
 .service-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  /* [카테고리 카드 간격] */
+  --svc-grid-gap: 24px;
+  gap: var(--svc-grid-gap);
 }
 
 .service-item {
   display: flex;
   background: #f9f9f9;
-  border-radius: 15px;
+  /* [카테고리 카드 모서리 둥글기] */
+  --svc-card-radius: 12px;
+  border-radius: var(--svc-card-radius);
   overflow: hidden;
   transition: box-shadow 0.3s;
+  /* [카테고리 카드 세로 높이] */
+  --svc-card-height: 160px;
+  height: var(--svc-card-height);
 }
 
 .service-item:hover {
@@ -606,21 +615,40 @@ img {
 }
 
 .service-image {
-  flex: 1;
+  /* [카테고리 카드 이미지 너비 비율 — 예: 0.4 = 40%] */
+  --svc-img-ratio: 0.4;
+  flex: 0 0 calc(var(--svc-card-height) * var(--svc-img-ratio) / 0.4);
+  max-width: 200px;
 }
 
 .service-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .service-content {
   flex: 1;
-  padding: 40px;
+  /* [카테고리 카드 텍스트 패딩] */
+  --svc-content-padding: 24px;
+  padding: var(--svc-content-padding);
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.service-content h3 {
+  /* [카테고리 카드 제목 크기] */
+  --svc-title-size: 1.1rem;
+  font-size: var(--svc-title-size);
+}
+
+.service-content p {
+  /* [카테고리 카드 설명 크기] */
+  --svc-desc-size: 0.85rem;
+  font-size: var(--svc-desc-size);
+  line-height: 1.6;
 }
 
 .service-content h3 {
@@ -1181,6 +1209,12 @@ img {
 
   .service-item {
     flex-direction: column;
+    height: auto;
+  }
+
+  .service-image {
+    max-width: none;
+    height: 160px;
   }
 
   .product-card {
