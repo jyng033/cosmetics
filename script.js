@@ -416,7 +416,7 @@ const observerOptions = {
   });
 
   // ===== 챗봇 위젯 토글 =====
-  const CHATBOT_URL = 'http://localhost:3000/widget';  // 배포 시 'https://benatural-chatbot.vercel.app/widget'로 복원
+  const CHATBOT_URL = 'https://benatural-chatbot.vercel.app/widget';
   const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
   const chatbotWidget = document.getElementById('chatbotWidget');
   const chatbotFrame = document.getElementById('chatbotFrame');
