@@ -221,7 +221,8 @@ const heroSlides = document.querySelectorAll('.hero-slide');
 const heroDots = document.querySelectorAll('.hero-dot');
 let currentSlide = 0;
 let slideInterval;
-const SLIDE_DURATION = 5000; // 자동 넘김 간격 (5초)
+const SLIDE_DURATION = 5000;
+const hasHeroSlider = heroSlides.length > 0;
 
 function goToSlide(index) {
   // 현재 슬라이드 비활성화
@@ -253,89 +254,88 @@ function resetAutoSlide() {
   startAutoSlide();
 }
 
-// 도트 클릭 이벤트
-heroDots.forEach(dot => {
-  dot.addEventListener('click', () => {
-    const slideIndex = parseInt(dot.dataset.slide);
-    if (slideIndex !== currentSlide) {
-      goToSlide(slideIndex);
-      resetAutoSlide(); // 클릭 후 자동 넘김 타이머 리셋
-    }
+if (hasHeroSlider) {
+  // 도트 클릭 이벤트
+  heroDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const slideIndex = parseInt(dot.dataset.slide);
+      if (slideIndex !== currentSlide) {
+        goToSlide(slideIndex);
+        resetAutoSlide();
+      }
+    });
   });
-});
 
-// ===== 마우스 드래그로 슬라이드 넘기기 =====
-const heroSection = document.querySelector('.hero');
-let isDragging = false;
-let startX = 0;
-let dragDistance = 0;
-const DRAG_THRESHOLD = 50; // 이 거리(px) 이상 드래그해야 슬라이드 전환
+  // ===== 마우스 드래그로 슬라이드 넘기기 =====
+  const heroSection = document.querySelector('.hero');
+  let isDragging = false;
+  let startX = 0;
+  let dragDistance = 0;
+  const DRAG_THRESHOLD = 50;
 
-heroSection.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  startX = e.clientX;
-  dragDistance = 0;
-  heroSection.style.cursor = 'grabbing';
-});
+  heroSection.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    dragDistance = 0;
+    heroSection.style.cursor = 'grabbing';
+  });
 
-heroSection.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  dragDistance = e.clientX - startX;
-});
+  heroSection.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    dragDistance = e.clientX - startX;
+  });
 
-heroSection.addEventListener('mouseup', () => {
-  if (!isDragging) return;
-  isDragging = false;
-  heroSection.style.cursor = '';
-
-  if (Math.abs(dragDistance) > DRAG_THRESHOLD) {
-    if (dragDistance < 0) {
-      // 왼쪽으로 드래그 → 다음 슬라이드
-      nextSlide();
-    } else {
-      // 오른쪽으로 드래그 → 이전 슬라이드
-      prevSlide();
-    }
-    resetAutoSlide();
-  }
-});
-
-heroSection.addEventListener('mouseleave', () => {
-  if (isDragging) {
+  heroSection.addEventListener('mouseup', () => {
+    if (!isDragging) return;
     isDragging = false;
     heroSection.style.cursor = '';
-  }
-});
 
-// 드래그 중 이미지/링크 기본 드래그 방지
-heroSection.addEventListener('dragstart', (e) => e.preventDefault());
-
-// ===== 터치 스와이프 지원 (모바일) =====
-let touchStartX = 0;
-let touchDistance = 0;
-
-heroSection.addEventListener('touchstart', (e) => {
-  touchStartX = e.touches[0].clientX;
-  touchDistance = 0;
-}, { passive: true });
-
-heroSection.addEventListener('touchmove', (e) => {
-  touchDistance = e.touches[0].clientX - touchStartX;
-}, { passive: true });
-
-heroSection.addEventListener('touchend', () => {
-  if (Math.abs(touchDistance) > DRAG_THRESHOLD) {
-    if (touchDistance < 0) {
-      nextSlide();
-    } else {
-      prevSlide();
+    if (Math.abs(dragDistance) > DRAG_THRESHOLD) {
+      if (dragDistance < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+      resetAutoSlide();
     }
-    resetAutoSlide();
-  }
-});
+  });
 
-// 자동 슬라이드 시작
-startAutoSlide();
+  heroSection.addEventListener('mouseleave', () => {
+    if (isDragging) {
+      isDragging = false;
+      heroSection.style.cursor = '';
+    }
+  });
+
+  heroSection.addEventListener('dragstart', (e) => e.preventDefault());
+
+  // ===== 터치 스와이프 지원 (모바일) =====
+  let touchStartX = 0;
+  let touchDistance = 0;
+
+  heroSection.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchDistance = 0;
+  }, { passive: true });
+
+  heroSection.addEventListener('touchmove', (e) => {
+    touchDistance = e.touches[0].clientX - touchStartX;
+  }, { passive: true });
+
+  heroSection.addEventListener('touchend', () => {
+    if (Math.abs(touchDistance) > DRAG_THRESHOLD) {
+      if (touchDistance < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+      resetAutoSlide();
+    }
+  });
+
+  // 자동 슬라이드 시작
+  startAutoSlide();
+}
 
 // 스크롤 애니메이션
 const observerOptions = {
@@ -404,17 +404,8 @@ const observerOptions = {
   });
 
   // ===== 플로팅 스크롤 버튼 =====
-  const floatingNav = document.querySelector('.floating-nav');
   const scrollTopBtn = document.getElementById('scrollTopBtn');
   const scrollBottomBtn = document.getElementById('scrollBottomBtn');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      floatingNav.classList.add('visible');
-    } else {
-      floatingNav.classList.remove('visible');
-    }
-  });
 
   scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -423,6 +414,32 @@ const observerOptions = {
   scrollBottomBtn.addEventListener('click', () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   });
+
+  // ===== 챗봇 위젯 토글 =====
+  const CHATBOT_URL = 'http://localhost:3000/widget';  // 배포 시 'https://benatural-chatbot.vercel.app/widget'로 복원
+  const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
+  const chatbotWidget = document.getElementById('chatbotWidget');
+  const chatbotFrame = document.getElementById('chatbotFrame');
+  let chatbotLoaded = false;
+
+  function closeChatbot() {
+    chatbotWidget.classList.remove('open');
+    chatbotToggleBtn.classList.remove('active');
+    chatbotToggleBtn.setAttribute('aria-label', '챗봇 열기');
+  }
+
+  chatbotToggleBtn.addEventListener('click', () => {
+    const isOpen = chatbotWidget.classList.toggle('open');
+    chatbotToggleBtn.classList.toggle('active', isOpen);
+    chatbotToggleBtn.setAttribute('aria-label', isOpen ? '챗봇 닫기' : '챗봇 열기');
+
+    if (!chatbotLoaded && isOpen) {
+      chatbotFrame.src = CHATBOT_URL;
+      chatbotLoaded = true;
+    }
+  });
+
+  document.getElementById('chatbotCloseBtn').addEventListener('click', closeChatbot);
 
   // ===== 언어 전환 버튼 =====
   document.querySelectorAll('.lang-btn').forEach(btn => {

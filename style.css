@@ -974,13 +974,6 @@ img {
   display: flex;
   flex-direction: column;
   gap: var(--floating-gap);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-}
-
-.floating-nav.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -1004,6 +997,108 @@ img {
 .floating-btn:hover {
   background: var(--floating-btn-hover-bg);
   transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   챗봇 위젯
+   ============================================================ */
+.chatbot-toggle-btn {
+  background: #c8e265 !important;
+  color: #4E2D0F !important;
+  border-radius: 50% !important;
+  position: relative;
+}
+
+.chatbot-toggle-btn:hover {
+  background: #b8d255 !important;
+  transform: translateY(-2px);
+}
+
+.chatbot-toggle-btn.active {
+  background: #4E2D0F !important;
+  color: #fff !important;
+}
+
+.chatbot-widget {
+  position: fixed;
+  bottom: 200px;
+  right: 40px;
+  width: 380px;
+  height: 560px;
+  z-index: 9999;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.chatbot-widget.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+:root {
+  --chatbot-close-top: 20px;                          /* 닫기 버튼 위에서 거리 */
+  --chatbot-close-right: 16px;                        /* 닫기 버튼 오른쪽에서 거리 */
+  --chatbot-close-size: 28px;                         /* 닫기 버튼 크기 (가로·세로) */
+  --chatbot-close-bg: rgba(255, 255, 255, 0.2);      /* 닫기 버튼 배경색 */
+  --chatbot-close-hover-bg: rgba(255, 255, 255, 0.35); /* 닫기 버튼 호버 배경색 */
+  --chatbot-close-color: #fff;                        /* 닫기 버튼 아이콘 색상 */
+  --chatbot-close-icon-size: 16px;                    /* 닫기 버튼 아이콘 크기 */
+}
+
+.chatbot-close-btn {
+  position: absolute;
+  top: var(--chatbot-close-top);
+  right: var(--chatbot-close-right);
+  z-index: 10;
+  width: var(--chatbot-close-size);
+  height: var(--chatbot-close-size);
+  border: none;
+  border-radius: 50%;
+  background: var(--chatbot-close-bg);
+  color: var(--chatbot-close-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.chatbot-close-btn svg {
+  width: var(--chatbot-close-icon-size);
+  height: var(--chatbot-close-icon-size);
+}
+
+.chatbot-close-btn:hover {
+  background: var(--chatbot-close-hover-bg);
+}
+
+.chatbot-widget iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .chatbot-widget {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .chatbot-widget iframe {
+    border-radius: 0;
+  }
 }
 
 
@@ -1086,5 +1181,171 @@ img {
 
   .service-item {
     flex-direction: column;
+  }
+
+  .category-product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+
+/* ============================================================
+   카테고리 상품 페이지 — 히어로 섹션
+   ============================================================ */
+:root {
+  /* ===== 히어로 배경 ===== */
+  --cat-hero-bg: #4E2D0F;                             /* 배경색 */
+  --cat-hero-bg-image: none;                           /* 배경 이미지 (예: url('image/hero.jpg')) */
+  --cat-hero-bg-size: cover;                           /* 배경 이미지 크기 */
+  --cat-hero-bg-position: center;                      /* 배경 이미지 위치 */
+  --cat-hero-bg-overlay: rgba(0, 0, 0, 0);            /* 배경 오버레이 색상 (투명도 조절) */
+  --cat-hero-padding-top: 140px;                       /* 히어로 상단 패딩 */
+  --cat-hero-padding-bottom: 60px;                     /* 히어로 하단 패딩 */
+  --cat-hero-text-align: center;                       /* 텍스트 정렬 (center / left / right) */
+
+  /* ===== 히어로 타이틀 (예: SKIN CARE) ===== */
+  --cat-hero-title-size: 2.8rem;                       /* 타이틀 글자 크기 */
+  --cat-hero-title-weight: 700;                        /* 타이틀 글자 굵기 */
+  --cat-hero-title-color: #fff;                        /* 타이틀 글자색 */
+  --cat-hero-title-spacing: 0.05em;                    /* 타이틀 자간 */
+  --cat-hero-title-margin-bottom: 10px;                /* 타이틀 아래 간격 */
+
+  /* ===== 히어로 서브타이틀 (설명문) ===== */
+  --cat-hero-sub-size: 1.1rem;                         /* 서브타이틀 글자 크기 */
+  --cat-hero-sub-weight: 400;                          /* 서브타이틀 글자 굵기 */
+  --cat-hero-sub-color: rgba(255, 255, 255, 0.8);     /* 서브타이틀 글자색 */
+  --cat-hero-sub-spacing: 0;                           /* 서브타이틀 자간 */
+}
+
+.category-hero {
+  padding: var(--cat-hero-padding-top) 0 var(--cat-hero-padding-bottom);
+  background-color: var(--cat-hero-bg);
+  background-image: var(--cat-hero-bg-image);
+  background-size: var(--cat-hero-bg-size);
+  background-position: var(--cat-hero-bg-position);
+  text-align: var(--cat-hero-text-align);
+  color: #fff;
+  position: relative;
+}
+
+.category-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cat-hero-bg-overlay);
+  pointer-events: none;
+}
+
+.category-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.category-hero h1 {
+  font-size: var(--cat-hero-title-size);
+  font-weight: var(--cat-hero-title-weight);
+  color: var(--cat-hero-title-color);
+  letter-spacing: var(--cat-hero-title-spacing);
+  margin-bottom: var(--cat-hero-title-margin-bottom);
+}
+
+.category-hero p {
+  font-size: var(--cat-hero-sub-size);
+  font-weight: var(--cat-hero-sub-weight);
+  color: var(--cat-hero-sub-color);
+  letter-spacing: var(--cat-hero-sub-spacing);
+}
+
+.category-products {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.category-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+}
+
+.product-card-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.product-card-body {
+  padding: 20px;
+}
+
+.product-card-category {
+  font-size: 0.75rem;
+  color: #4E2D0F;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.product-card-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.product-card-volume {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.product-card-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4E2D0F;
+}
+
+.product-card-desc {
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.6;
+  margin-top: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .category-product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .category-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-hero h1 {
+    font-size: 2rem;
+  }
+
+  .product-card-body {
+    padding: 14px;
   }
 }
