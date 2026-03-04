@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be Natural 관리자페이지</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container">
+      <h1>Be Natural 관리자페이지</h1>
+      <div class="header-actions">
+        <a href="index.html" class="outline-btn">쇼핑몰로 이동</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container admin-main">
+    <section class="cards">
+      <article class="card">
+        <h2>총 회원수</h2>
+        <p id="totalMembers">0</p>
+      </article>
+      <article class="card">
+        <h2>총 주문수</h2>
+        <p id="totalOrders">0</p>
+      </article>
+      <article class="card">
+        <h2>대기 주문</h2>
+        <p id="pendingOrders">0</p>
+      </article>
+      <article class="card">
+        <h2>총 매출</h2>
+        <p id="totalRevenue">0원</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>회원 관리</h2>
+        <input id="memberSearchInput" type="text" placeholder="이름/이메일 검색">
+      </div>
+
+      <form id="memberForm" class="inline-form">
+        <input type="text" name="name" placeholder="회원 이름" required>
+        <input type="email" name="email" placeholder="이메일" required>
+        <select name="grade">
+          <option value="BASIC">BASIC</option>
+          <option value="VIP">VIP</option>
+          <option value="VVIP">VVIP</option>
+        </select>
+        <select name="status">
+          <option value="ACTIVE">ACTIVE</option>
+          <option value="DORMANT">DORMANT</option>
+          <option value="BLOCKED">BLOCKED</option>
+        </select>
+        <button type="submit">회원 추가</button>
+      </form>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>이름</th>
+              <th>이메일</th>
+              <th>등급</th>
+              <th>상태</th>
+              <th>가입일</th>
+              <th>관리</th>
+            </tr>
+          </thead>
+          <tbody id="memberTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>주문 관리</h2>
+        <input id="orderSearchInput" type="text" placeholder="주문번호/회원이메일 검색">
+      </div>
+
+      <form id="orderForm" class="inline-form">
+        <input type="text" name="orderNo" placeholder="주문번호 (예: ORD-20260304-001)" required>
+        <input type="email" name="memberEmail" placeholder="회원 이메일" required>
+        <input type="number" name="amount" min="0" step="100" placeholder="주문금액" required>
+        <select name="status">
+          <option value="PENDING">PENDING</option>
+          <option value="PAID">PAID</option>
+          <option value="SHIPPING">SHIPPING</option>
+          <option value="DONE">DONE</option>
+          <option value="CANCELLED">CANCELLED</option>
+        </select>
+        <button type="submit">주문 추가</button>
+      </form>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>주문번호</th>
+              <th>회원 이메일</th>
+              <th>금액</th>
+              <th>상태</th>
+              <th>주문일</th>
+              <th>관리</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>데이터 관리 도구</h2>
+      <div class="tools">
+        <button id="seedDataBtn">샘플 데이터 초기화</button>
+        <button id="backupBtn">데이터 백업(JSON)</button>
+        <label class="file-label" for="restoreInput">데이터 복원(JSON 선택)</label>
+        <input id="restoreInput" type="file" accept=".json">
+      </div>
+      <p class="hint">현재 버전은 브라우저 로컬스토리지 기반입니다. 실서비스에서는 서버 DB로 이전해야 합니다.</p>
+      <p class="hint"><a href="admin-data-guide.md" target="_blank" rel="noopener noreferrer">상세 데이터 관리 가이드 보기</a></p>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
